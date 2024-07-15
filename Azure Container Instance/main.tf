@@ -14,7 +14,7 @@ resource "azurerm_container_group" "container" {
 
   container {
     name   = var.container_name
-    image  = "${var.image}:${var.image_tag}"
+    image  = var.image
     cpu    = var.cpu_cores
     memory = var.memory_in_gb
 
@@ -24,9 +24,14 @@ resource "azurerm_container_group" "container" {
     }
 
     environment_variables = {
+      "PDF_MAX_SIZE_MB"             = var.pdf_max_size_mb
+      "REQUEST_TIMEOUT_SECONDS"     = var.request_timeout_seconds
       "ALLOWED_ORIGINS"             = var.allowed_origins
       "ENVIRONMENT"                 = var.api_environment
       "HTTP_PORTS"                  = var.port
+    }
+
+    secure_environment_variables = {
       "IronSecureDoc_LicenseKey"    = var.license_key
     }
   }

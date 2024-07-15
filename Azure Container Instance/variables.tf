@@ -25,13 +25,7 @@ variable "container_name" {
 variable "image" {
   type        = string
   description = "Container image to deploy. Should be of the form repoName/imagename:tag for images stored in public Docker Hub, or a fully qualified URI for other registries. Images from private registries require additional registry credentials."
-  default     = "ironsoftwareofficial/ironsecuredoc"
-}
-
-variable "image_tag" {
-  type        = string
-  description = "The tag of the image to deploy."
-  default     = "latest"
+  default     = "ironsoftwareofficial/ironsecuredoc:latest"
 }
 
 variable "port" {
@@ -66,6 +60,18 @@ variable "dns_name_label" {
   type        = string
   description = "The fully qualified domain name for the container group."
   default     = "ironsd"
+}
+
+variable "pdf_max_size_mb" {
+  type        = number
+  description = "The maximum size of a PDF file that can be processed by IronSecureDoc in megabytes."
+  default     = 30
+}
+
+variable "request_timeout_seconds" {
+  type        = number
+  description = "The maximum time in seconds that IronSecureDoc will wait for a request to complete."
+  default     = 5
 }
 
 variable "allowed_origins" {
