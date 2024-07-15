@@ -105,6 +105,8 @@ resource "aws_ecs_task_definition" "app_task" {
         }
       ],
       "environment": [
+        { "name": "PDF_MAX_SIZE_MB", "value": "${var.container_pdf_max_size_mb}" },
+        { "name": "REQUEST_TIMEOUT_SECONDS", "value": "${var.container_request_timeout_seconds}" },
         { "name": "ALLOWED_ORIGINS", "value": "${var.container_allowed_origins}" },
         { "name": "ENVIRONMENT", "value": "${var.container_environment}" },
         { "name": "HTTP_PORTS", "value": "${var.container_port}" },

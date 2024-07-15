@@ -43,6 +43,16 @@ variable "container_memory" {
   default     = 1024  
 }
 
+variable "container_pdf_max_size_mb" {
+  description = "Maximum size of PDF file in MB"
+  default     = 30  
+}
+
+variable "container_request_timeout_seconds" {
+  description = "Request timeout in seconds"
+  default     = 10
+}
+
 variable "container_allowed_origins" {
   description = "Allowed origins for the container. Use comma separated values, or `all` for all origins"
   default     = "all"
